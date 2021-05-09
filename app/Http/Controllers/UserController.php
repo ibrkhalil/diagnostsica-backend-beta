@@ -20,6 +20,8 @@ class UserController extends Controller
     }
     public function showResults(Request $request, $userId)
     {
+        // echo 'hi';
+        // die();
         $results = ResultController::getResult($userId);
 
         if ($results) {
@@ -35,8 +37,10 @@ class UserController extends Controller
         $dataBody = ["result" => $request->result, "id" => $request->id];
 
 
-        if (ResultController::sendResult($dataBody, $userId))
+        if (ResultController::sendResult($dataBody, $userId)) {
+
             return response()->json(['message' => 'data sent successfully!']);
+        }
 
 
         return response()->json(['message' => 'an error has occurred!']);

@@ -8,5 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Result extends Model
 {
     //
-
+    protected $fillable = [
+        'result'
+    ];
 }

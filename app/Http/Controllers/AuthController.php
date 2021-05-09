@@ -51,6 +51,11 @@ class AuthController extends Controller
                 'token' => $token->accessToken,
                 'id' => $userid
             ]);
+        } else {
+            return response()->json([
+                'Message' => "Invalid Info"
+
+            ]);
         }
     }
 }
