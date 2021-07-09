@@ -26,18 +26,13 @@ class AuthController extends Controller
         ]);
 
         $user = User::where('email', '=', $request->email)->first();
-        if($user === null){
         $user = User::create([
             'username' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
-        return response()->json("User Registred Successfully!");
-    }
-        else
-        return response()->json("User Already Exists!");
 
-        
+        return response()->json($user);
     }
     public function login(Request $request)
     {

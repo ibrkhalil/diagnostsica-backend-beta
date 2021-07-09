@@ -20,24 +20,19 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6'
         ]);
 
-        $user = User::where('email', '=', $request->email)->first();
-        if($user === null){
+
         $user = User::create([
-            'username' => $request->name,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
-        return response()->json("User Registred Successfully!");
-    }
-        else
-        return response()->json("User Already Exists!");
 
-        
+        return response()->json($user);
     }
     public function login(Request $request)
     {
@@ -60,7 +55,7 @@ class AuthController extends Controller
             ]);
         } else {
             return response()->json([
-                'Message' => "Email or Password is incorrect"
+                'Message' => "Invalid Info"
 
             ]);
         }

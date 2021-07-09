@@ -32,7 +32,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
-        return response()->json("User Registred Successfully!");
+        return response()->json($user);
     }
         else
         return response()->json("User Already Exists!");
