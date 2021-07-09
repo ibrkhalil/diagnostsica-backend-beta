@@ -63,6 +63,11 @@ class AuthController extends Controller
                 'Message' => "Email or Password is incorrect"
 
             ]);
+        } else {
+            return response()->json([
+                'Message' => "Invalid Info"
+
+            ]);
         }
     }
 }
